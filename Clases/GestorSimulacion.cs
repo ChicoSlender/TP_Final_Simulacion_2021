@@ -207,7 +207,7 @@ namespace TPFinalSIM.Clases
                 }
             }
 
-            estadosPersistentes.Add(this.armarVectorEstado("Fin de simulación"));
+            estadosPersistentes.Add(this.armarVectorEstado("Fin de simulación", ultimaFila: true));
 
             return estadosPersistentes;
         }
@@ -246,7 +246,7 @@ namespace TPFinalSIM.Clases
             return indexSigEvento;
         }
 
-        private object[] armarVectorEstado(string etiquetaEvento)
+        private object[] armarVectorEstado(string etiquetaEvento, bool ultimaFila = false)
         {
             object[] estado = new object[43];
 
@@ -321,91 +321,100 @@ namespace TPFinalSIM.Clases
             estado[38] = this.truncar(this.acumTiempoFabricacion,4).ToString();
             estado[39] = this.truncar(this.contPiezasFabricadas,4).ToString();
 
-            List<string[]> datosTapas = new List<string[]>();
-
-            foreach(Tapa tapa in this.maqPintura.Cola)
+            if(!ultimaFila)
             {
-                datosTapas.Add(new string[] { 
+                List<string[]> datosTapas = new List<string[]>();
+
+                foreach (Tapa tapa in this.maqPintura.Cola)
+                {
+                    datosTapas.Add(new string[] {
                     tapa.Numero.ToString(),
                     tapa.getNombreEstado(),
                     tapa.Tipo.ToString()
                 });
-            }
+                }
 
-            Tapa tapaAtendida = this.maqPintura.TapaAtendida;
-            if (tapaAtendida != null)
-                datosTapas.Add(new string[] {
+                Tapa tapaAtendida = this.maqPintura.TapaAtendida;
+                if (tapaAtendida != null)
+                    datosTapas.Add(new string[] {
                     tapaAtendida.Numero.ToString(),
                     tapaAtendida.getNombreEstado(),
                     tapaAtendida.Tipo.ToString()
                 });
 
-            foreach (Tapa tapa in this.maqEnsamble.ColaTapasInf)
-                datosTapas.Add(new string[] {
+                foreach (Tapa tapa in this.maqEnsamble.ColaTapasInf)
+                    datosTapas.Add(new string[] {
                     tapa.Numero.ToString(),
                     tapa.getNombreEstado(),
                     tapa.Tipo.ToString()
                 });
 
-            tapaAtendida = this.maqEnsamble.TapaInfAtendida;
-            if(tapaAtendida != null)
-                datosTapas.Add(new string[] {
+                tapaAtendida = this.maqEnsamble.TapaInfAtendida;
+                if (tapaAtendida != null)
+                    datosTapas.Add(new string[] {
                     tapaAtendida.Numero.ToString(),
                     tapaAtendida.getNombreEstado(),
                     tapaAtendida.Tipo.ToString()
                 });
 
-            foreach (Tapa tapa in this.maqEnsamble.ColaTapasSup)
-                datosTapas.Add(new string[] {
+                foreach (Tapa tapa in this.maqEnsamble.ColaTapasSup)
+                    datosTapas.Add(new string[] {
                     tapa.Numero.ToString(),
                     tapa.getNombreEstado(),
                     tapa.Tipo.ToString()
                 });
 
-            tapaAtendida = this.maqEnsamble.TapaSupAtendida;
-            if (tapaAtendida != null)
-                datosTapas.Add(new string[] {
+                tapaAtendida = this.maqEnsamble.TapaSupAtendida;
+                if (tapaAtendida != null)
+                    datosTapas.Add(new string[] {
                     tapaAtendida.Numero.ToString(),
                     tapaAtendida.getNombreEstado(),
                     tapaAtendida.Tipo.ToString()
                 });
 
-            estado[40] = datosTapas;
+                estado[40] = datosTapas;
 
-            List<string[]> datosCajas = new List<string[]>();
-            
-            foreach(Caja caja in this.maqDesempaque.Cola)
-            {
-                datosCajas.Add(new string[] {
+                List<string[]> datosCajas = new List<string[]>();
+
+                foreach (Caja caja in this.maqDesempaque.Cola)
+                {
+                    datosCajas.Add(new string[] {
                     caja.Numero.ToString(),
                     caja.getNombreEstado()
                 });
-            }
+                }
 
-            if (this.maqDesempaque.CajaAtendida != null)
-                datosCajas.Add(new string[] {
+                if (this.maqDesempaque.CajaAtendida != null)
+                    datosCajas.Add(new string[] {
                     this.maqDesempaque.CajaAtendida.Numero.ToString(),
                     this.maqDesempaque.CajaAtendida.getNombreEstado()
                 });
 
-            estado[41] = datosCajas;
+                estado[41] = datosCajas;
 
-            List<string[]> datosPiezas = new List<string[]>();
+                List<string[]> datosPiezas = new List<string[]>();
 
-            foreach (Pieza pieza in this.maqEnsamble.ColaPiezas)
-                datosPiezas.Add(new string[] {
+                foreach (Pieza pieza in this.maqEnsamble.ColaPiezas)
+                    datosPiezas.Add(new string[] {
                     pieza.Numero.ToString(),
                     pieza.getNombreEstado()
                 });
 
-            if(this.maqEnsamble.PiezaAtendida != null)
-                datosPiezas.Add(new string[] {
+                if (this.maqEnsamble.PiezaAtendida != null)
+                    datosPiezas.Add(new string[] {
                     this.maqEnsamble.PiezaAtendida.Numero.ToString(),
                     this.maqEnsamble.PiezaAtendida.getNombreEstado()
                 });
 
-            estado[42] = datosPiezas;
-
+                estado[42] = datosPiezas;
+            }
+            else
+            {
+                estado[40] = new List<string[]>();
+                estado[41] = new List<string[]>();
+                estado[42] = new List<string[]>();
+            }
+            
             return estado;
         }
 
