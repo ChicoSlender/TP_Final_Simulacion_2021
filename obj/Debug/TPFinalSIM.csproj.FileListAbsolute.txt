@@ -1,0 +1,14 @@
+C:\Users\gtben\source\repos\TPFinalSIM\bin\Debug\TPFinalSIM.exe.config
+C:\Users\gtben\source\repos\TPFinalSIM\bin\Debug\TPFinalSIM.exe
+C:\Users\gtben\source\repos\TPFinalSIM\bin\Debug\TPFinalSIM.pdb
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.csproj.AssemblyReference.cache
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.Form1.resources
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.Properties.Resources.resources
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.csproj.GenerateResource.cache
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.csproj.CoreCompileInputs.cache
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.exe
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.pdb
+C:\Users\gtben\source\repos\TPFinalSIM\bin\Debug\TPFinalSIM.exe.manifest
+C:\Users\gtben\source\repos\TPFinalSIM\bin\Debug\TPFinalSIM.application
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.exe.manifest
+C:\Users\gtben\source\repos\TPFinalSIM\obj\Debug\TPFinalSIM.application
